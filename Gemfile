@@ -63,3 +63,9 @@ group :development, :test do
   gem 'teaspoon-mocha'
   gem 'phantomjs'
 end
+
+# Add support for running tests when files are modified/created
+group :development do
+  gem 'guard'
+  gem 'guard-minitest'
+end
