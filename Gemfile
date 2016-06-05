@@ -57,3 +57,9 @@ gem 'rails-assets-angular-devise'
 
 # Cleaner JSON responses
 gem 'active_model_serializers', '~> 0.10.0'
+
+# Add support for testing javascript
+group :development, :test do
+  gem 'teaspoon-mocha'
+  gem 'phantomjs'
+end
