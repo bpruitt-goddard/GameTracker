@@ -68,6 +68,7 @@ end
 group :development do
   gem 'guard'
   gem 'guard-minitest'
+  gem 'guard-teaspoon'
 end
 
 group :test do

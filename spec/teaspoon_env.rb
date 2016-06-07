@@ -10,7 +10,7 @@ Teaspoon.configure do |config|
 
   # Paths that will be appended to the Rails assets paths
   # Note: Relative to `config.root`.
-  config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets"]
+  config.asset_paths = ["spec/javascripts", "spec/javascripts/stylesheets", "vendor/assets/bower_components/"]
 
   # Fixtures are rendered through a controller, which allows using HAML, RABL/JBuilder, etc. Files in these paths will
   # be rendered as fixtures.
@@ -33,8 +33,8 @@ Teaspoon.configure do |config|
     # directives.
     # Note: If no version is specified, the latest is assumed.
     #
-    # Versions: 1.10.0, 1.17.1, 1.18.2, 1.19.0, 2.0.1, 2.1.0, 2.2.4
-    suite.use_framework :mocha, "2.2.4"
+    # Versions: 1.10.0, 1.17.1, 1.18.2, 1.19.0, 2.0.1, 2.1.0, 2.2.4, 2.2.5, 2.3.3
+    suite.use_framework :mocha, "2.3.3"
 
     # Specify a file matcher as a regular expression and all matching files will be loaded when the suite is run. These
     # files need to be within an asset path. You can add asset paths using the `config.asset_paths`.
@@ -65,9 +65,12 @@ Teaspoon.configure do |config|
     #suite.hook :fixtures, &proc{}
 
     # Determine whether specs loaded into the test harness should be embedded as individual script tags or concatenated
-    # into a single file. Similar to Rails' asset `debug: true` and `config.assets.debug = true` options. By default,
+    # into a single file. Similar to Rails' asset `debug: true` and `config.assets.debug = true` options. By default, 
     # Teaspoon expands all assets to provide more valuable stack traces that reference individual source files.
     #suite.expand_assets = true
+
+    # Non-.js file extensions Teaspoon should consider JavaScript files
+    #suite.js_extensions = [/(\.js)?.coffee/, /(\.js)?.es6/, ".es6.js"]
   end
 
   # Example suite. Since we're just filtering to files already within the root test/javascripts, these files will also
@@ -88,11 +91,12 @@ Teaspoon.configure do |config|
   # Rake:
   # teaspoon DRIVER=phantomjs SERVER_PORT=31337 FAIL_FAST=true FORMATTERS=junit suite=my_suite
 
-  # Specify which headless driver to use. Supports PhantomJS and Selenium Webdriver.
+  # Specify which headless driver to use. Supports PhantomJS, Selenium Webdriver and BrowserStack Webdriver.
   #
-  # Available: :phantomjs, :selenium, :capybara_webkit
+  # Available: :phantomjs, :selenium, :browserstack, :capybara_webkit
   # PhantomJS: https://github.com/modeset/teaspoon/wiki/Using-PhantomJS
   # Selenium Webdriver: https://github.com/modeset/teaspoon/wiki/Using-Selenium-WebDriver
+  # BrowserStack Webdriver: https://github.com/modeset/teaspoon/wiki/Using-BrowserStack-WebDriver
   # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
   #config.driver = :phantomjs
 
@@ -100,6 +104,7 @@ Teaspoon.configure do |config|
   #
   # PhantomJS: https://github.com/modeset/teaspoon/wiki/Using-PhantomJS
   # Selenium Webdriver: https://github.com/modeset/teaspoon/wiki/Using-Selenium-WebDriver
+  # BrowserStack Webdriver: https://github.com/modeset/teaspoon/wiki/Using-BrowserStack-WebDriver
   # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
   #config.driver_options = nil
 
@@ -109,6 +114,9 @@ Teaspoon.configure do |config|
 
   # Specify a server to use with Rack (e.g. thin, mongrel). If nil is provided Rack::Server is used.
   #config.server = nil
+
+  # Specify a host to run on a specific host, otherwise Teaspoon will use 127.0.0.1.
+  #config.server_host = nil
 
   # Specify a port to run on a specific port, otherwise Teaspoon will use a random available port.
   #config.server_port = nil
