@@ -35,7 +35,6 @@
 
 # Ignore angular packages
 /client/node_modules
-/client/bower_components
 
 # Ignore gulp build directory
 /client/build
