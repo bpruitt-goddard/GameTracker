@@ -1,16 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# Note: Keep this file idempotent as it will be run after every build
-
-unless Rails.env == 'production'
-  #Create basic user in non-production environments
-  genesisUser = User.find_or_initialize_by(email: 'gametracker@example.com')
-  genesisUser.password = 'gametracker'
-  genesisUser.password_confirmation = 'gametracker'
-  genesisUser.save!
-end
-
-unknownPlayer = Player.find_or_create_by(id: -1)
-unknownPlayer.name = 'Unknown'
-unknownPlayer.save!
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)

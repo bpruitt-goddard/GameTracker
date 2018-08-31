@@ -7,31 +7,20 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
 
-# Ignore RubyMine User-specific stuff:
-/.idea/workspace.xml
-/.idea/tasks.xml
-/.idea/dictionaries
-/.idea/vcs.xml
-/.idea/jsLibraryMappings.xml
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
 
-# Ignore Rubymine sensitive or high-churn files:
-/.idea/dataSources.ids
-/.idea/dataSources.xml
-/.idea/dataSources.local.xml
-/.idea/sqlDataSources.xml
-/.idea/dynamic.xml
-/.idea/uiDesigner.xml
+.byebug_history
 
-# Ignore cache
-/vendor
+# Ignore master key for decrypting credentials and more.
+/config/master.key
 
 # Ignore angular packages
 /client/node_modules
