@@ -1,0 +1,2 @@
+class SessionPlayer < ApplicationRecord
+end
